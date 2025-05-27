@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <title>GIFs para WhatsApp</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+
+</head>
+<body class="bg-light">
+    <div class="container text-center mt-5">
+        <h1>Pesquise seu GIF preferido</h1>
+        <form method="POST" class="my-4">
+            <input type="text" name="query" placeholder="Ex: gatos, memes, etc." class="form-control mb-2" required>
+            <button type="submit" class="btn btn-primary">Buscar GIFs</button>
+        </form>
+
+        <div class="row">
+            {% for gif in gifs %}
+                <div class="col-md-4 mb-4">
+                    <img src="{{ gif }}" alt="GIF" class="img-fluid">
+                    <a href="https://wa.me/?text={{ gif }}" target="_blank" class="btn btn-success mt-2">Enviar pelo WhatsApp</a>
+                </div>
+            {% endfor %}
+        </div>
+    </div>
+</body>
+</html>
